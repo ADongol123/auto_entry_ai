@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from datetime import datetime
 
 # MongoDB connection
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://aayush:aayush@cluster0.gztz2.mongodb.net/")
+MONGO_URI = os.getenv("MONGO_URI", "YOur mongodb URI")
 DB_NAME = "bills"
 COLLECTION_NAME = "parsed_bills"
 
