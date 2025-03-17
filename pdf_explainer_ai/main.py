@@ -1,6 +1,6 @@
-from pdf_processor import load_pdf, split_text
-from vector_store import create_vector_store,query_pdf
-from rag_generator import generate_response
+from pdf_explainer_ai.src.core.pdf_processor import load_pdf, split_text
+from pdf_explainer_ai.src.core.vector_store import create_vector_store,query_pdf
+from pdf_explainer_ai.src.core.rag_generator import generate_response
 
 
 def process_and_query_pdf(file_path = "dummy.pdf"):
