@@ -5,6 +5,7 @@ from bson import ObjectId
 
 client = MongoClient(MONGO_URI)
 db = client[MONGO_DB_NAME]
+pdfs_collection = db["pdfs"]
 
 def save_pdf(file_path:str, filename:str, pdf_texts: list) -> str:
     """Save PDF faile and extracted text to MongoDB, return document ID."""
@@ -39,3 +40,11 @@ def get_pdf_by_id(pdf_id:str):
     return db.pdfs.find_one({
         "id": ObjectId(pdf_id)
     })
+    
+    
+def get_pdf_metadata(pdf_id: str) -> dict:
+    pdf_doc = pdfs_collection.find_one({"pdf_id": pdf_id})
+    if not pdf_doc:
+        raise ValueError(f"No PDF found with pdf_id: {pdf_id}")
+    pdf_doc.pop("_id", None)
+    return pdf_doc
